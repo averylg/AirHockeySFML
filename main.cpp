@@ -4,10 +4,11 @@
 #include <time.h>
 
 #include "GameState.h"
+#include "Utils.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML AIR HOCKEY");
+    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "SFML AIR HOCKEY");
 
     // TITLE SCREEN
     sf::Font font;
@@ -29,14 +30,14 @@ int main()
     title.setCharacterSize(84);
     title.setFillColor(sf::Color::Green);
     title.setStyle(sf::Text::Bold);
-    title.setPosition(sf::Vector2f(300, 200));
+    title.setPosition(sf::Vector2f(700, 200));
 
     prompt.setFont(font);
     prompt.setString("Press ENTER to begin playing!");
     prompt.setCharacterSize(64);
     prompt.setFillColor(sf::Color::Green);
     prompt.setStyle(sf::Text::Bold);
-    prompt.setPosition(sf::Vector2f(200, 400));
+    prompt.setPosition(sf::Vector2f(500, 400));
 
     sf::Text red_wins;
     red_wins.setFont(font);
@@ -44,7 +45,7 @@ int main()
     red_wins.setCharacterSize(84);
     red_wins.setFillColor(sf::Color::Red);
     red_wins.setStyle(sf::Text::Bold);
-    red_wins.setPosition(sf::Vector2f(300, 200));
+    red_wins.setPosition(sf::Vector2f(500, 200));
 
     sf::Text blue_wins;
     blue_wins.setFont(font);
@@ -52,7 +53,7 @@ int main()
     blue_wins.setCharacterSize(84);
     blue_wins.setFillColor(sf::Color::Blue);
     blue_wins.setStyle(sf::Text::Bold);
-    blue_wins.setPosition(sf::Vector2f(300, 200));
+    blue_wins.setPosition(sf::Vector2f(500, 200));
 
     sf::Text play_again_prompt;
     play_again_prompt.setFont(font);
@@ -108,7 +109,7 @@ int main()
     // BLUE PLAYER
     sf::RectangleShape blue_boi(sf::Vector2f(60, 60));
     blue_boi.setFillColor(sf::Color::Blue);
-    blue_boi.setPosition(1280 - 40 - 60, 540);
+    blue_boi.setPosition(WIDTH - 40 - 60, 540);
 
     // PUCK START DIRECTION
     srand(time(NULL));
@@ -153,7 +154,7 @@ int main()
             {
                 red_boi.move(sf::Vector2f(-1, 0));
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && red_boi.getPosition().y < 700 - red_boi.getSize().y)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && red_boi.getPosition().y < HEIGHT - 20 - red_boi.getSize().y)
             {
                 red_boi.move(sf::Vector2f(0, 1));
             }
@@ -171,11 +172,11 @@ int main()
             {
                 blue_boi.move(sf::Vector2f(-1, 0));
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && blue_boi.getPosition().y < 700 - blue_boi.getSize().y)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && blue_boi.getPosition().y < HEIGHT - 20 - blue_boi.getSize().y)
             {
                 blue_boi.move(sf::Vector2f(0, 1));
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && blue_boi.getPosition().x < 1260 - blue_boi.getSize().x)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && blue_boi.getPosition().x < WIDTH - 20 - blue_boi.getSize().x)
             {
                 blue_boi.move(sf::Vector2f(1, 0));
             }
@@ -206,7 +207,7 @@ int main()
             {
                 red_boi.move(sf::Vector2f(-1, 0));
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && red_boi.getPosition().y < 700 - red_boi.getSize().y)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && red_boi.getPosition().y < HEIGHT - 20 - red_boi.getSize().y)
             {
                 red_boi.move(sf::Vector2f(0, 1));
             }
@@ -224,11 +225,11 @@ int main()
             {
                 blue_boi.move(sf::Vector2f(-1, 0));
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && blue_boi.getPosition().y < 700 - blue_boi.getSize().y)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && blue_boi.getPosition().y < HEIGHT - 20 - blue_boi.getSize().y)
             {
                 blue_boi.move(sf::Vector2f(0, 1));
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && blue_boi.getPosition().x < 1260 - blue_boi.getSize().x)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && blue_boi.getPosition().x < WIDTH - 20 - blue_boi.getSize().x)
             {
                 blue_boi.move(sf::Vector2f(1, 0));
             }
@@ -245,11 +246,11 @@ int main()
 
             if (puck_hitbox.getPosition().y <= 20)
                 y_vel_puck = 1.0f;
-            else if (puck_hitbox.getPosition().y >= 700 - puck_hitbox.getSize().y)
+            else if (puck_hitbox.getPosition().y >= HEIGHT - 20 - puck_hitbox.getSize().y)
                 y_vel_puck = -1.0f;
             else if (puck_hitbox.getPosition().x <= 20)
                 x_vel_puck = 1.0f;
-            else if (puck_hitbox.getPosition().x >= 1260 - puck_hitbox.getSize().x)
+            else if (puck_hitbox.getPosition().x >= WIDTH - 20 - puck_hitbox.getSize().x)
                 x_vel_puck = -1.0f;
 
             // PUCK HITS RED RIGHT SIDE
@@ -365,7 +366,7 @@ int main()
                 window.setTitle("TUTORIAL STATE");
             }
 
-            puck_hitbox.setPosition(sf::Vector2f(1280 - 100 - puck_hitbox.getSize().x, window.getSize().y / 2));
+            puck_hitbox.setPosition(sf::Vector2f(WIDTH - 100 - puck_hitbox.getSize().x, window.getSize().y / 2));
             puck_been_hit_yet = false;
 
             play_again_prompt.setFillColor(sf::Color::Red);
