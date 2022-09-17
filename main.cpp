@@ -70,7 +70,7 @@ int main()
 
     // SPAWN PUCK
     sf::RectangleShape puck_hitbox(sf::Vector2f(40, 40));
-    puck_hitbox.setFillColor(sf::Color::Color(0x0F, 0xFF, 0x50));
+    puck_hitbox.setFillColor(sf::Color::Color(0x0F, 0xAF, 0x50));
     puck_hitbox.setPosition(sf::Vector2f(window.getSize().x / 2 - puck_hitbox.getSize().x / 2, window.getSize().y / 2));
 
     // MIDLINE
@@ -253,8 +253,9 @@ int main()
             else if (puck_hitbox.getPosition().x >= WIDTH - 20 - puck_hitbox.getSize().x)
                 x_vel_puck = -1.0f;
 
-            // PUCK HITS RED RIGHT SIDE
-            if (puck_hitbox.getPosition().x == red_boi.getPosition().x + red_boi.getSize().x
+            // PUCK HITS RED RIGHT SIDE [x]
+            if (puck_hitbox.getPosition().x - (red_boi.getPosition().x + red_boi.getSize().x) <= 0
+                && puck_hitbox.getPosition().x - (red_boi.getPosition().x + red_boi.getSize().x) >= -8
                 && puck_hitbox.getPosition().y <= red_boi.getPosition().y + red_boi.getSize().y
                 && puck_hitbox.getPosition().y >= red_boi.getPosition().y - puck_hitbox.getSize().y)
             {
@@ -262,8 +263,9 @@ int main()
                 puck_been_hit_yet = true;
             }
 
-            // PUCK HITS RED LEFT SIDE
-            if (puck_hitbox.getPosition().x + puck_hitbox.getSize().x == red_boi.getPosition().x
+            // PUCK HITS RED LEFT SIDE [x]
+            if (puck_hitbox.getPosition().x + puck_hitbox.getSize().x - red_boi.getPosition().x >= 0
+                && puck_hitbox.getPosition().x + puck_hitbox.getSize().x - red_boi.getPosition().x <= 8
                 && puck_hitbox.getPosition().y <= red_boi.getPosition().y + red_boi.getSize().y
                 && puck_hitbox.getPosition().y >= red_boi.getPosition().y - puck_hitbox.getSize().y)
             {
@@ -271,8 +273,10 @@ int main()
                 puck_been_hit_yet = true;
             }
 
-            // PUCK HITS RED TOP SIDE
-            if (puck_hitbox.getPosition().y + puck_hitbox.getSize().y == red_boi.getPosition().y
+            // PUCK HITS RED TOP SIDE [x]
+            // original bound: puck_hitbox.getPosition().y + puck_hitbox.getSize().y == red_boi.getPosition().y
+            if (puck_hitbox.getPosition().y + puck_hitbox.getSize().y  - red_boi.getPosition().y >= 0
+                && puck_hitbox.getPosition().y + puck_hitbox.getSize().y - red_boi.getPosition().y <= 8
                 && puck_hitbox.getPosition().x <= red_boi.getPosition().x + red_boi.getSize().x
                 && puck_hitbox.getPosition().x >= red_boi.getPosition().x - puck_hitbox.getSize().x)
             {
@@ -280,8 +284,10 @@ int main()
                 puck_been_hit_yet = true;
             }
 
-            // PUCK HITS RED BOTTOM SIDE
-            if (puck_hitbox.getPosition().y == red_boi.getPosition().y + red_boi.getSize().y
+            // PUCK HITS RED BOTTOM SIDE [x]
+            // orig bound: puck_hitbox.getPosition().y == red_boi.getPosition().y + red_boi.getSize().y
+            if (puck_hitbox.getPosition().y - (red_boi.getPosition().y + red_boi.getSize().y) >= 0
+                && puck_hitbox.getPosition().y - (red_boi.getPosition().y + red_boi.getSize().y) <= 8
                 && puck_hitbox.getPosition().x <= red_boi.getPosition().x + red_boi.getSize().x
                 && puck_hitbox.getPosition().x >= red_boi.getPosition().x - puck_hitbox.getSize().x)
             {
@@ -289,8 +295,9 @@ int main()
                 puck_been_hit_yet = true;
             }
 
-            // PUCK HITS BLUE RIGHT SIDE
-            if (puck_hitbox.getPosition().x == blue_boi.getPosition().x + blue_boi.getSize().x
+            // PUCK HITS BLUE RIGHT SIDE [x]
+            if (puck_hitbox.getPosition().x - (blue_boi.getPosition().x + blue_boi.getSize().x) <= 0
+                && puck_hitbox.getPosition().x - (blue_boi.getPosition().x + blue_boi.getSize().x) >= -8
                 && puck_hitbox.getPosition().y <= blue_boi.getPosition().y + blue_boi.getSize().y
                 && puck_hitbox.getPosition().y >= blue_boi.getPosition().y - puck_hitbox.getSize().y)
             {
@@ -298,8 +305,9 @@ int main()
                 puck_been_hit_yet = true;
             }
 
-            // PUCK HITS BLUE LEFT SIDE
-            if (puck_hitbox.getPosition().x + puck_hitbox.getSize().x == blue_boi.getPosition().x
+            // PUCK HITS BLUE LEFT SIDE [x]
+            if (puck_hitbox.getPosition().x + puck_hitbox.getSize().x - blue_boi.getPosition().x >= 0
+                && puck_hitbox.getPosition().x + puck_hitbox.getSize().x - blue_boi.getPosition().x <= 8
                 && puck_hitbox.getPosition().y <= blue_boi.getPosition().y + blue_boi.getSize().y
                 && puck_hitbox.getPosition().y >= blue_boi.getPosition().y - puck_hitbox.getSize().y)
             {
@@ -307,8 +315,9 @@ int main()
                 puck_been_hit_yet = true;
             }
 
-            // PUCK HITS BLUE TOP SIDE
-            if (puck_hitbox.getPosition().y + puck_hitbox.getSize().y == blue_boi.getPosition().y
+            // PUCK HITS BLUE TOP SIDE [x]
+            if (puck_hitbox.getPosition().y + puck_hitbox.getSize().y - blue_boi.getPosition().y >= 0
+                && puck_hitbox.getPosition().y + puck_hitbox.getSize().y - blue_boi.getPosition().y <= 8
                 && puck_hitbox.getPosition().x <= blue_boi.getPosition().x + blue_boi.getSize().x
                 && puck_hitbox.getPosition().x >= blue_boi.getPosition().x - puck_hitbox.getSize().x)
             {
@@ -316,8 +325,9 @@ int main()
                 puck_been_hit_yet = true;
             }
 
-            // PUCK HITS BLUE BOTTOM SIDE
-            if (puck_hitbox.getPosition().y == blue_boi.getPosition().y + blue_boi.getSize().y
+            // PUCK HITS BLUE BOTTOM SIDE [x]
+            if (puck_hitbox.getPosition().y - (blue_boi.getPosition().y + blue_boi.getSize().y) >= 0
+                && puck_hitbox.getPosition().y - (blue_boi.getPosition().y + blue_boi.getSize().y) <= 8
                 && puck_hitbox.getPosition().x <= blue_boi.getPosition().x + blue_boi.getSize().x
                 && puck_hitbox.getPosition().x >= blue_boi.getPosition().x - puck_hitbox.getSize().x)
             {
@@ -326,16 +336,17 @@ int main()
             }
 
             // PUCK HITS BLUE'S GOAL
-            if (puck_hitbox.getPosition().x + puck_hitbox.getSize().x == right_goal.getPosition().x
+            if (puck_hitbox.getPosition().x + puck_hitbox.getSize().x >= right_goal.getPosition().x
                 && puck_hitbox.getPosition().y >= right_goal.getPosition().y
                 && puck_hitbox.getPosition().y + puck_hitbox.getSize().y <= right_goal.getPosition().y + right_goal.getSize().y)
             {
+
                 state = GameState::REDWIN;
                 window.setTitle("RED WINS");
             }
 
             // PUCK HITS RED'S GOAL
-            if (puck_hitbox.getPosition().x == left_goal.getPosition().x + left_goal.getSize().x
+            if (puck_hitbox.getPosition().x <= left_goal.getPosition().x + left_goal.getSize().x
                 && puck_hitbox.getPosition().y >= left_goal.getPosition().y
                 && puck_hitbox.getPosition().y + puck_hitbox.getSize().y <= left_goal.getPosition().y + left_goal.getSize().y)
             {
