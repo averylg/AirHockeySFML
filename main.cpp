@@ -23,7 +23,7 @@ int main()
 
     // BACKGROUND COLOR
     sf::RectangleShape background(sf::Vector2f(window.getSize().x, window.getSize().y));
-    background.setFillColor(sf::Color::White);
+    background.setFillColor(sf::Color::Color(0xEE, 0xEE, 0xFF));
 
     title.setFont(font);
     title.setString("SFML Air Hockey");
